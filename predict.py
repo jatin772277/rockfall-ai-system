@@ -16,12 +16,12 @@ def predict_sensor_risk(features):
 def predict_terrain_risk(features):
     features = np.array(features).reshape(1, -1)
     score = -terrain_model.score_samples(features)
-    return float(score)
+    return float(score[0])
 
 def predict_weather_risk(features):
     features = np.array(features).reshape(1, -1)
     score = -weather_model.score_samples(features)
-    return float(score)
+    return float(score[0])
 
 def predict_final_risk(terrain_features,weather_features,sensor_features):
     terrain_score = predict_terrain_risk(terrain_features)

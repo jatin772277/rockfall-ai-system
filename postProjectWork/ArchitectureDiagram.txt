@@ -1,0 +1,69 @@
+```
+                AI-Based Rockfall Prediction & Early Warning System
+
+                                  User
+                                    │
+                                    ▼
+                     Streamlit Web Dashboard (app.py)
+                                    │
+             ┌──────────────────────┼──────────────────────┐
+             │                      │                      │
+             ▼                      ▼                      ▼
+
+      Terrain Module         Weather Module         Sensor Module
+      (Terrain Model)       (Weather Model)       (Sensor Model)
+
+      Inputs:               Inputs:              Inputs:
+      - Elevation           - Rainfall           - Displacement Mean
+      - Slope               - Temperature        - Pore Pressure Mean
+      - Aspect              - Humidity           - Displacement Velocity
+      - Roughness           - Wind Speed         - Acceleration
+                            - Pressure           - Pressure Rate
+
+             │                      │                      │
+             ▼                      ▼                      ▼
+
+      Isolation Forest      Isolation Forest      Random Forest
+           Model                 Model             Classifier
+
+             │                      │                      │
+             ▼                      ▼                      ▼
+
+      Terrain Risk          Weather Risk          Sensor Risk
+
+             └──────────────────────┼──────────────────────┘
+                                    │
+                                    ▼
+
+                       Risk Fusion Engine
+
+            Final Score =
+            (0.3 × Terrain Risk) +
+            (0.3 × Weather Risk) +
+            (0.4 × Sensor Risk)
+
+                                    │
+                                    ▼
+
+                      Risk Classification
+
+                      LOW     (< 0.30)
+                      MEDIUM  (0.30–0.60)
+                      HIGH    (> 0.60)
+
+                                    │
+                                    ▼
+
+                  Alert & Visualization Layer
+
+                  - Risk Gauge
+                  - Alert Messages
+                  - Prediction History
+                  - CSV Report Generation
+                  - Downloadable Reports
+
+                                    │
+                                    ▼
+
+                     Cloud Deployment (Render)
+```

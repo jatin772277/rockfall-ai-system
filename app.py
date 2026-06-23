@@ -4,7 +4,11 @@ from datetime import datetime
 import os
 import plotly.graph_objects as go
 from predict import *
-
+import warnings
+warnings.filterwarnings(
+    "ignore",
+    category=FutureWarning
+)
 st.set_page_config(page_title="AI RockFall Prediction System",layout="wide")
 
 st.title("⛏️ AI-Based Rockfall Prediction & Alert System")
@@ -23,26 +27,26 @@ st.write("Predict rockfall risk using Sensor, Terrain, Weather Data.")
 
 st.sidebar.header("Terrain Data")
 
-elevation = st.sidebar.number_input("Elevation",value=2100.0)
-slope = st.sidebar.number_input("Slope",value=45.0)
-aspect = st.sidebar.number_input("Aspect",value=120.0)
-roughness = st.sidebar.number_input("Roughness",value=80.0)
+elevation = st.sidebar.number_input("Elevation",value=2100.0,step = 1.0,format = "%.4f")
+slope = st.sidebar.number_input("Slope",value=45.0,step = 1.0,format = "%.4f")
+aspect = st.sidebar.number_input("Aspect",value=120.0,step = 1.0,format = "%.4f")
+roughness = st.sidebar.number_input("Roughness",value=80.0,step = 1.0,format = "%.4f")
 
 st.sidebar.header("Weather Data")
 
-rainfall = st.sidebar.number_input("Rainfall (7 Days)",value=35.0)
-temperature = st.sidebar.number_input("Temperature",value=20.0)
-humidity = st.sidebar.number_input("Humidity",value=85.0)
-wind = st.sidebar.number_input("Wind Speed",value=5.0)
-pressure = st.sidebar.number_input("Pressure",value=82.0)
+rainfall = st.sidebar.number_input("Rainfall (7 Days)",value=35.0,step = 1.0,format = "%.4f")
+temperature = st.sidebar.number_input("Temperature",value=20.0,step = 1.0,format = "%.4f")
+humidity = st.sidebar.number_input("Humidity",value=85.0,step = 1.0,format = "%.4f")
+wind = st.sidebar.number_input("Wind Speed",value=5.0,step = 1.0,format = "%.4f")
+pressure = st.sidebar.number_input("Pressure",value=82.0,step = 1.0,format = "%.4f")
 
 st.sidebar.header("Sensor Data")
 
-displacement = st.sidebar.number_input("Displacement Mean",value=0.4)
-pore_pressure = st.sidebar.number_input("Pore Pressure Mean",value=4.2)
-velocity = st.sidebar.number_input("Displacement Velocity",value=0.03)
-acceleration = st.sidebar.number_input("Displacement Acceleration",value=0.002)
-pressure_rate = st.sidebar.number_input("Pore Pressure Rate",value=0.05)
+displacement = st.sidebar.number_input("Displacement Mean",value=0.4,step = 0.001,format = "%.6f")
+pore_pressure = st.sidebar.number_input("Pore Pressure Mean",value=4.2,step = 0.001,format = "%.6f")
+velocity = st.sidebar.number_input("Displacement Velocity",value=0.03,step = 0.001,format = "%.6f")
+acceleration = st.sidebar.number_input("Displacement Acceleration",value=0.002,step = 0.001,format = "%.6f")
+pressure_rate = st.sidebar.number_input("Pore Pressure Rate",value=0.05,step = 0.001,format = "%.6f")
 
 if st.button("Predict Risk"):
 
